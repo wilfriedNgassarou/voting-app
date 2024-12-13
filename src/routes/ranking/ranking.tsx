@@ -11,9 +11,8 @@ export function Ranking() {
   const [displaySiteModalInDom, setDisplaySiteModalInDom] = useState(false) ;
 
   const [selectedSite, setSelectedSite] = useState<Site | null>(null)
-  
 
-  // remove spinner after 5s
+  // remove spinner after .5s
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false)
