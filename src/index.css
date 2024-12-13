@@ -1,0 +1,19 @@
+@import "react-alice-carousel/lib/alice-carousel.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  background-color: #f9f9f9;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+.link-active span:nth-of-type(1) {
+  background-color: #bbebfc !important;
+}
