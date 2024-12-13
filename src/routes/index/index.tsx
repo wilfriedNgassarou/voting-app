@@ -118,7 +118,7 @@ export function Root() {
   return (
     <section>
       <section className="bg-white h-24 flex flex-col justify-center gap-2 px-5">
-        <h1>Sites icam:</h1>
+        <h1 className="font-medium">Sites icam:</h1>
         {/* List of sites, bg-blue for the active one  */}
         <section className="flex items-center justify-between">
           {
@@ -127,7 +127,7 @@ export function Root() {
                 key={item.index}
                 onClick={() => setSelectedSite(item)}
                 className={`
-                  border rounded capitalize border-black flex h-10 px-5 items-center justify-center cursor-pointer
+                  border rounded font-light capitalize border-black flex h-10 px-5 items-center justify-center cursor-pointer
                   ${selectedSite!.index == item.index ? 'bg-secondary text-white border-secondary' : 'text-black'} duration-100 
                 `}
               >
@@ -141,7 +141,7 @@ export function Root() {
       {
         selectedSite != null && (
           <section className="h-60 px-4 my-4 mx-5 py-4 flex flex-col justify-between bg-white rounded-lg shadow-md shadow-black/60">
-            <h2>Average: <span>{selectedSite.score}/5</span></h2>
+            <h2 className="font-light">Average: <span className="font-medium">{selectedSite.score}/5</span></h2>
             <div className="flex w-full justify-center">
               <div className="relative flex justify-center items-center">
                 <img src="/hero.png" height={100} alt="" />
@@ -161,19 +161,19 @@ export function Root() {
                 }
               </div>
             </div>
-            <h3 className="text-center">You can be cooler !!</h3>
+            <h3 className="text-center font-semibold">You can be cooler !!</h3>
           </section>
         )
       }
       <section className="py-2 px-4 mb-4 mx-5 bg-white rounded-lg shadow-md shadow-black/60">
-        <h2>Criterias</h2>
+        <h2 className="font-medium">Criterias</h2>
         {/* list of criterias */}
         <section className="my-2 flex text-sm flex-col gap-2">
           {
             criterias.map((item) => (
               <div key={item.title}>
-                <h4 className="capitalize">{item.title}:</h4>
-                <div className="flex justify-center gap-4">
+                <h4 className="capitalize italic font-light">{item.title}:</h4>
+                <div className="flex justify-center gap-4 mt-1">
                   <span onClick={() => updateCriteria(item.index, item.note == 1 ? 0 : 1)}>
                     { item.note > 0 ? <StartFillSVG size={24} /> : <StarSVG size={24} /> }
                   </span>
@@ -195,7 +195,7 @@ export function Root() {
           }
         </section>
         {/* buttons  */}
-        <section className="flex justify-between mt-6 mb-2 text-sm">
+        <section className="flex justify-between font-light mt-6 mb-2 text-sm">
           <button
             onClick={handleReset} 
             className="h-10 w-24 relative group flex items-center overflow-hidden justify-center border border-black rounded-md"
