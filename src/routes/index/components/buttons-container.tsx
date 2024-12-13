@@ -26,7 +26,7 @@ export function ButtonsContainer({ criterias, setCriterias, setDisplaySubmitModa
       <button
         onClick={() => {
           // all criterias should have less one stars
-          const permission = criterias.reduce((a, b) => b.note != 0, false )
+          const permission = criterias.reduce((_, b) => b.note != 0, false )
 
           if(!permission) return alert('Please select one or many star') ;
 
