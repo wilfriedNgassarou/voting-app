@@ -174,19 +174,19 @@ export function Root() {
               <div key={item.title}>
                 <h4 className="capitalize italic font-light">{item.title}:</h4>
                 <div className="flex justify-center gap-4 mt-1">
-                  <span onClick={() => updateCriteria(item.index, item.note == 1 ? 0 : 1)}>
+                  <span onClick={() => updateCriteria(item.index, item.note >= 1 ? 0 : 1)}>
                     { item.note > 0 ? <StartFillSVG size={24} /> : <StarSVG size={24} /> }
                   </span>
-                  <span onClick={() => updateCriteria(item.index, 2)}>
+                  <span onClick={() => updateCriteria(item.index, item.note >= 2 ? 1 : 2)}>
                     { item.note > 1 ? <StartFillSVG size={24} /> : <StarSVG size={24} /> }
                   </span>
-                  <span onClick={() => updateCriteria(item.index, 3)}>
+                  <span onClick={() => updateCriteria(item.index, item.note >= 3 ? 2 : 3)}>
                     { item.note > 2 ? <StartFillSVG size={24} /> : <StarSVG size={24} /> }
                   </span>
-                  <span onClick={() => updateCriteria(item.index, 4)}>
+                  <span onClick={() => updateCriteria(item.index, item.note >= 4 ? 3 : 3)}>
                     { item.note > 3 ? <StartFillSVG size={24} /> : <StarSVG size={24} /> }
                   </span>
-                  <span onClick={() => updateCriteria(item.index, 5)}>
+                  <span onClick={() => updateCriteria(item.index, item.note >= 5 ? 4 : 5)}>
                     { item.note > 4 ? <StartFillSVG size={24} /> : <StarSVG size={24} /> }
                   </span>
                 </div>
