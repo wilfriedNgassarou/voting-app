@@ -19,19 +19,19 @@ export function ResultBoard() {
         <section className="flex flex-col font-medium gap-2">
           <article className="h-28 gap-1 flex items-end">
             <div>
-              <span className="capitalize">{sortedSites[2].title}</span>
+              <span className="capitalize flex justify-center">{sortedSites[2].title}</span>
               <div className="bg-secondary rounded-tl-3xl rounded-tr-3xl text-center pt-2 h-10 w-20">
                 <span className="text-2xl text-white font-bold">3</span>
               </div>
             </div>
             <div>
-              <span className="capitalize">{sortedSites[0].title}</span>
+              <span className="capitalize flex justify-center">{sortedSites[0].title}</span>
               <div className="bg-secondary rounded-tl-3xl rounded-tr-3xl text-center pt-2 h-24 w-20">
                 <span className="text-2xl text-white font-bold">1</span>
               </div>
             </div>
             <div>
-              <span className="capitalize">{sortedSites[1].title}</span>
+              <span className="capitalize flex justify-center">{sortedSites[1].title}</span>
               <div className="bg-secondary rounded-tl-3xl rounded-tr-3xl text-center pt-2 h-14 w-20">
                 <span className="text-2xl text-white font-bold">2</span>
               </div>

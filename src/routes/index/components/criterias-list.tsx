@@ -38,10 +38,10 @@ export function CriteriasList({ criterias, setCriterias }: Props) {
                 stars.map((i) => (
                   <span
                     key={i}
-                    // if item.note == current stars, we remove this stars, else we add it  
+                    // if item.note == current star, we remove this star, else we add it  
                     onClick={() => updateCriteria(item.index, item.note >= i ? (i - 1) : i)}
                   >
-                    {/* we will star were note > index  */}
+                    {/* we fill star were note > index  */}
                     { item.note > (i - 1) ? <StartFillSVG size={24} /> : <StarSVG size={24} /> }
                   </span>
                 ))

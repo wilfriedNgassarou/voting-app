@@ -1,6 +1,7 @@
 import { StartFillSVG } from "../../../components/svg/star-fill-svg";
 import { StarSVG } from "../../../components/svg/star-svg";
 import { Site } from "../../../data/sites"
+import { getAverage } from "../../../utils/getAverage";
 
 interface Props {
   selectedSite: Site
@@ -36,13 +37,6 @@ export function SelectedSiteContainer({ selectedSite }: Props) {
     },
   ]
 
-  const getAverage = (array: number[]) => {
-    const total = array.length
-    const sum = array.reduce((a, b) => a + b, 0)
-
-    return sum / total
-  }
-
   // array of average of all criterias 
   const allAverage = selectedSite.criterias.map((item) => getAverage(item.notes)) ;
   const generalAverage = +getAverage(allAverage).toFixed(2)
@@ -53,7 +47,7 @@ export function SelectedSiteContainer({ selectedSite }: Props) {
       <div className="flex w-full justify-center">
         <div className="relative flex justify-center items-center">
           <img src="/hero.png" height={100} alt="" />
-
+          
           {
             stars.map((item) => (
               <span 

@@ -47,3 +47,21 @@ body {
   0% { transform: scale(1); }
   100% { transform: scale(0); }
 }
+
+.move-in {
+  animation: moveIn 200ms ease-out both;
+}
+
+.move-out {
+  animation: moveOut 150ms ease-out both;
+}
+
+@keyframes moveIn {
+  0% { transform: translateY(-140px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes moveOut {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-140px); }
+}

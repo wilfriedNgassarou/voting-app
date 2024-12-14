@@ -6,15 +6,18 @@ import { SelectedSiteContainer } from "./components/selected-site-container"
 import { CriteriasList } from "./components/criterias-list"
 import { ButtonsContainer } from "./components/buttons-container"
 import SubmitModalContainer from "./components/submit-modal-container"
+import { AlertModal } from "./components/alert-modal"
 
 export function Root() {
   const { sites, criterias: dataCriterias } = useContext(DataContext)!
   const [selectedSite, setSelectedSite] = useState<Site | null>(sites[0])
 
-  const [isLoading, setIsLoading] = useState(false) ;
-
   const [showSubmitModal, setShowSubmitModal] = useState(false) ;
   const [displaySubmitModalInDom, setDisplaySubmitModalInDom] = useState(false) ;
+
+  // show success message 
+  const [showAlertModal, setShowAlertModal] = useState(false) ;
+  const [displayAlertModalInDom, setDisplayAlertModalInDom] = useState(false) ;
   
   const [criterias, setCriterias] = useState(
     dataCriterias.map((item, index) => ({
@@ -27,16 +30,26 @@ export function Root() {
   return (
     <section>
       {
+        displayAlertModalInDom && (
+          <AlertModal
+            type="success"
+            showAlertModal={showAlertModal} 
+            setDisplayAlertModalInDom={setDisplayAlertModalInDom}
+            setShowAlertModal={setShowAlertModal}
+          />
+        )
+      }
+      {
         displaySubmitModalInDom && (
           <SubmitModalContainer
             criterias={criterias}
             setCriterias={setCriterias}
-            isLoading={isLoading}
             selectedSite={selectedSite!}
             setDisplaySubmitModalInDom={setDisplaySubmitModalInDom}
-            setIsLoading={setIsLoading}
             setShowSubmitModal={setShowSubmitModal}
-            showSubmitModal={showSubmitModal} 
+            showSubmitModal={showSubmitModal}
+            setShowAlertModal={setShowAlertModal}
+            setDisplayAlertModalInDom={setDisplayAlertModalInDom} 
           />
         )
       }

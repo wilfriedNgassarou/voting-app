@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useContext } from "react"
+import { Dispatch, SetStateAction, useContext, useState } from "react"
 import { DataContext } from "../../layout"
 import { Site } from "../../../data/sites"
 
@@ -6,9 +6,9 @@ interface Props {
   selectedSite: Site,
   criterias: { index: number, title: string, note: number }[],
   setCriterias: Dispatch<SetStateAction<{ index: number, title: string, note: number }[]>>,
-  isLoading: boolean,
-  setIsLoading: Dispatch<SetStateAction<boolean>>
   showSubmitModal: boolean,
+  setShowAlertModal: Dispatch<SetStateAction<boolean>>
+  setDisplayAlertModalInDom: Dispatch<SetStateAction<boolean>>
   setShowSubmitModal: Dispatch<SetStateAction<boolean>>
   setDisplaySubmitModalInDom: Dispatch<SetStateAction<boolean>>
 }
@@ -17,15 +17,16 @@ export default function SubmitModalContainer({
   selectedSite,
   criterias,
   setCriterias,
-  isLoading,
-  setIsLoading,
   setDisplaySubmitModalInDom,
   showSubmitModal, 
-  setShowSubmitModal 
+  setShowSubmitModal,
+  setDisplayAlertModalInDom,
+  setShowAlertModal 
 }: Props) {
 
   const { sites, setSites } = useContext(DataContext)!
-
+  const [isLoading, setIsLoading] = useState(false) ;
+  
   const handleReset = () => {
     const items = criterias.map((item) => ({...item, note: 0}))
 
@@ -54,13 +55,19 @@ export default function SubmitModalContainer({
       }))
       
       setIsLoading(false)
+      // hide submit modal
       setShowSubmitModal(false)
+
       handleReset()
-      alert('Saved successfully')
+
+      // show success message 
+      setShowAlertModal(true)
+      setDisplayAlertModalInDom(true)
     }, 600);
   }
 
   return (
+  
     <div className="absolute inset-0 flex justify-center items-center z-50">
       <div 
         onClick={() => {
@@ -72,7 +79,7 @@ export default function SubmitModalContainer({
       <section 
         className={`
           h-60 relative px-4 my-4 w-80 py-4 flex flex-col justify-center items-center gap-4 
-          bg-white rounded-lg shadow-md shadow-black/80
+          bg-white rounded-lg
           ${showSubmitModal ? 'scale-in' : 'scale-out'}
         `}
         onAnimationEnd={(e) => {

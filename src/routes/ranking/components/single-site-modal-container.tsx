@@ -26,7 +26,7 @@ export function SingleSiteModalContainer({
       <section 
         className={`
           h-60 relative px-4 my-4 w-80 py-4 flex flex-col justify-center items-center gap-4 
-          bg-white rounded-lg shadow-md shadow-black/80
+          bg-white rounded-lg
           ${showSiteModal ? 'scale-in' : 'scale-out'}
         `}
         onAnimationEnd={(e) => {

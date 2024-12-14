@@ -1,4 +1,5 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
+import { AlertModal } from "./alert-modal";
 
 interface Props {
   criterias: { index: number, title: string, note: number }[]
@@ -14,8 +15,21 @@ export function ButtonsContainer({ criterias, setCriterias, setDisplaySubmitModa
     setCriterias(items)
   }
 
+  const [showAlertModal, setShowAlertModal] = useState(false) ;
+  const [displayAlertModalInDom, setDisplayAlertModalInDom] = useState(false) ;
+
   return (
     <section className="flex justify-between font-light mt-6 mb-2 text-sm">
+      {
+        displayAlertModalInDom && (
+          <AlertModal
+            type="error"
+            showAlertModal={showAlertModal} 
+            setDisplayAlertModalInDom={setDisplayAlertModalInDom}
+            setShowAlertModal={setShowAlertModal}
+          />
+        )
+      }
       <button
         onClick={handleReset} 
         className="h-10 w-24 relative group flex items-center overflow-hidden justify-center border border-black rounded-md"
@@ -26,9 +40,18 @@ export function ButtonsContainer({ criterias, setCriterias, setDisplaySubmitModa
       <button
         onClick={() => {
           // all criterias should have less one stars
-          const permission = criterias.reduce((_, b) => b.note != 0, false )
+          const zeroStar = criterias.filter((item) => item.note == 0)
+          
+          if(zeroStar.length > 0) {
+            // if alert modal currently in dom, return 
+            if(displayAlertModalInDom == true) return 
 
-          if(!permission) return alert('Please select one or many star') ;
+            // show alert modal 
+            setDisplayAlertModalInDom(true)
+            setShowAlertModal(true)
+
+            return
+          } 
 
           setShowSubmitModal(true)
           setDisplaySubmitModalInDom(true)
