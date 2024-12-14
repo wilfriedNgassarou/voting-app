@@ -12,7 +12,7 @@ export function Ranking() {
 
   const [selectedSite, setSelectedSite] = useState<Site | null>(null)
   
-  // remove spinner after 5s
+  // remove spinner after .5s
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false)
