@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react"
+import { Dispatch, SetStateAction, useEffect } from "react"
 
 interface Props {
   type: 'success' | 'error',
@@ -14,9 +14,12 @@ export function AlertModal({
   type 
 }: Props) {
 
-  setTimeout(() => {
-    setShowAlertModal(false)
-  }, 1700);
+  useEffect(() => {
+    setTimeout(() => {
+      setShowAlertModal(false)
+    }, 1700);
+  }, [])
+
 
   return (
     <section 

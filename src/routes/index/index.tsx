@@ -54,7 +54,7 @@ export function Root() {
         )
       }
       <section className="bg-white h-24 flex flex-col justify-center gap-2 px-5">
-        <h1 className="font-medium">Sites icam:</h1>
+        <h1 className="font-medium">Select a site to proceed with voting</h1>
         <HeaderSiteList selectedSite={selectedSite} setSelectedSite={setSelectedSite} />
       </section>
 

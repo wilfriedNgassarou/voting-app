@@ -36,8 +36,8 @@ export default function ResultList({ setSelectedSite, setDisplayModalInDom, setS
             { index == 2 && (<BronzeMedal size={40} />) }
             <div>
               <span className="capitalize">{item.title}</span>
-              <div className="flex gap-4 items-center">
-                <span className="font-light">Score: <span className="font-medium">{getSiteScore(item)}/5</span></span>
+              <div className="flex items-center">
+                <span className="font-light w-28">Score: <span className="font-medium">{getSiteScore(item)}/5</span></span>
                 <StartFillSVG size={20} />
               </div>
             </div>
